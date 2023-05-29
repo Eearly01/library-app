@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ReturnBook } from './ReturnBook';
 import BookModel from '../../../models/BookModel';
+import { SpinnerLoading } from '../../Utils/SpinnerLoading';
 export const Carousel = () => {
 	const [books, setBooks] = useState<BookModel[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -27,9 +28,7 @@ export const Carousel = () => {
 	}, []);
 	if (isLoading) {
 		return (
-			<div className='container m-f'>
-				<p>Loading...</p>
-			</div>
+			<SpinnerLoading />
 		);
 	}
 	if (httpError) {
@@ -46,7 +45,7 @@ export const Carousel = () => {
 			</div>
 			<div
 				id='carouselExampleControls'
-				className='carousel carousel-dark slide mt-5 d-none d-lg-block' data-bs-interval='false'>
+				className='carousel carousel-dark slide mt-5 d-none d-lg-block' data-bs-interval='false' >
 				{/* Desktop */}
 				<div className='carousel-inner'>
 					<div className='carousel-item active'>
